@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Scent Corner</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .header {
+            position: relative;
+            background-image: url('Images/BackGround1.jpg'); /* Add your background image path */
+            background-size: cover; /* Ensure the image covers the header */
+            background-position: center; /* Center the background image */
+            height: 400px; /* Adjust height as needed */
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .menu-ngang {
+            position: absolute; /* Position menu on top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+            z-index: 2; /* Ensure menu stays on top */
+            color: white;
+        }
+
+        .menu-ngang ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-ngang li {
+            margin: 0 15px;
+        }
+
+        .menu-ngang li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .menu-ngang li a:hover {
+            background-color: #ff7e5f;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .header-content {
+            position: absolute;
+            bottom: 20px; /* Position content at the bottom */
+            width: 100%;
+            color: white;
+            text-align: center;
+            z-index: 1; /* Ensure it's below the menu */
+            padding: 0 20px;
+        }
+
+        .header-content h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .header-content p {
+            font-size: 1.2em;
+            margin: 10px 0 0;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .san-pham {
+            flex: 0 0 80%; /* Take up 80% of the space */
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-right: 20px; /* Space for the ad */
+        }
+
+        .san-pham h2 {
+            border-bottom: 2px solid #ff7e5f;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-item {
+            width: calc(33.333% - 20px);
+            box-sizing: border-box;
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            transition: box-shadow 0.3s, transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-item:hover {
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .product-item img:hover {
+            transform: scale(1.1); /* Zoom in on hover */
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .product-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .buy-now {
+            background-color: #ff7e5f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 25px; /* Rounded corners */
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s, transform 0.2s;
+            outline: none; /* Remove outline on focus */
+        }
+
+        .buy-now:active {
+            animation: throwAway 0.6s forwards; /* Uncomment this line and comment out the fallOff line for throw away effect */
+            background-color: #feb47b; /* Change color on click */
+        }
+
+        .buy-now:hover {
+            background-color: red;
+        }
+
+        /* Custom Hover Effect for Product Images */
+        @keyframes throwAway {
+            0% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2) rotate(15deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateX(100vw) translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .quang-cao {
+            flex: 0 0 290px; /* Fixed width for advertisement */
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: sticky; /* Keep it in view while scrolling */
+            top: 20px;
+        }
+
+        .quang-cao h2 {
+            border-bottom: 2px solid #ff7e5f;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .quang-cao p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Unique Typography */
+        .header h1 {
+            font-family: 'Playfair Display', serif; /* Custom serif font */
+            font-size: 3em;
+            margin: 0;
+        }
+
+        .product-title {
+            font-family: 'Roboto', sans-serif; /* Custom sans-serif font */
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #ff7e5f; /* Brand color */
+            margin: 10px 0;
+        }
+`.fragrance-feature {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: nowrap;
+            overflow-x: auto; /* Ensure it scrolls horizontally if there are too many cards */
+        }
+
+        .card {
+            width: 200px;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .card h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #ff7e5f;
+        }
+
+        .card p {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .card button {
+            background-color: #ff7e5f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            outline: none;
+        }
+
+        .card button:hover {
+            background-color: #e06655;
+        }
+         .sponsor-partners {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .sponsor-partners h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #ff7e5f;
+        }
+
+        .sponsor-partners img {
+            max-width: 150px;
+            margin: 10px;
+            vertical-align: middle;
+            transition: transform 0.3s;
+        }
+
+        .sponsor-partners img:hover {
+            transform: scale(1.1);
+        }
+
+        .fragrance-features-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            overflow-x: auto;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .fragrance-feature {
+            flex: 0 0 auto;
+            margin-right: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            width: 200px;
+            text-align: center;
+        }
+
+        .fragrance-feature button {
+            background-color: #ff5733;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .fragrance-feature button:hover {
+            background-color: #ff2e00;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-ngang">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="header-content">
+            <h1>The Scent Corner</h1>
+            <p>Dive into a world of irresistible fragrances that captivate your senses!</p>
+        </div>
+    </div>
+ <div class="fragrance-features-container">
+        <div class="fragrance-feature">
+            <h2>Floral Bliss</h2>
+            <p>Delicate blooms that dance on your skin.</p>
+            <button>Shop Floral</button>
+        </div>
+        <div class="fragrance-feature">
+            <h2>Woody Elegance</h2>
+            <p>Experience the rich, warm tones of sandalwood.</p>
+            <button>Shop Woody</button>
+        </div>
+        <div class="fragrance-feature">
+            <h2>Fresh Citrus</h2>
+            <p>Bright and zesty notes for a refreshing experience.</p>
+            <button>Shop Citrus</button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="san-pham">
+            <h2>Products</h2>
+            <div class="product-list">
+                <!-- Add at least 10 product items here -->
+                <div class="product-item">
+                    <img src="Image/Capture.PNG" alt="Product 1">
+                    <div class="product-info">
+                        <p class="product-description">This is a brief description of Product 1. It includes key features, benefits, and any other relevant information.</p>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+               <div class="product-item">
+                    <img src="Images/product2.jpg" alt="Product 2">
+                    <p>Product 2</p>
+                </div>
+                <div class="product-item">
+                    <img src="Images/product3.jpg" alt="Product 3">
+                    <p>Product 3</p>
+                </div>
+                <div class="product-item">
+                    <img src="Images/product4.jpg" alt="Product 4">
+                    <p>Product 4</p>
+                </div>
+                <div class="product-item">
+                    <img src="Images/product5.jpg" alt="Product 5">
+                    <p>Product 5</p>
+                </div>
+                <div class="product-item">
+                    <img src="Images/product6.jpg" alt="Product 6">
+                    <p>Product 6</p>
+                </div>
+                <div class="product-item">
+                    <img src="Images/product7.jpg" alt="Product 7">
+                    <p>Product 7</p>
+                </div>
+                <div class="product-item">
+                    <img src="Images/product8.jpg" alt="Product 8">
+                    <p>Product 8</p>
+                </div>
+                <div class="product-item">
+                    <img src="Images/product9.jpg" alt="Product 9">
+                    <p>Product 9</p>
+                </div>
+                <div class="product-item">
+                    <img src="Images/product10.jpg" alt="Product 10">
+                    <p>Product 10</p>
+                </div>
+            </div>
+        </div>
+        <div class="quang-cao">
+            <h2>Advertisements</h2>
+            <p>Place your advertisements here.</p>
+        </div>
+    </div>
+     <div class="sponsor-partners">
+        <h2>Our Sponsor Partners</h2>
+        <div class="sponsor-logos">
+            <img src="Images/sponsor1.jpg" alt="Sponsor 1">
+            <img src="Images/sponsor2.jpg" alt="Sponsor 2">
+            <img src="Images/sponsor3.jpg" alt="Sponsor 3">
+            <!-- Add more sponsor logos as needed -->
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 2024 The Scent Corner</p>
+    </div>
+</body>
+</html>

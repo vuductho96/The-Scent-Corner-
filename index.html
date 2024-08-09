@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Scent Corner</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .header {
+            position: relative;
+            background-image: url('Images/BackGround1.jpg'); /* Add your background image path */
+            background-size: cover; /* Ensure the image covers the header */
+            background-position: center; /* Center the background image */
+            height: 400px; /* Adjust height as needed */
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .menu-ngang {
+            position: absolute; /* Position menu on top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+            z-index: 2; /* Ensure menu stays on top */
+            color: white;
+        }
+
+        .menu-ngang ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-ngang li {
+            margin: 0 15px;
+        }
+
+        .menu-ngang li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .menu-ngang li a:hover {
+            background-color: #ff7e5f;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .header-content {
+            position: absolute;
+            bottom: 20px; /* Position content at the bottom */
+            width: 100%;
+            color: white;
+            text-align: center;
+            z-index: 1; /* Ensure it's below the menu */
+            padding: 0 20px;
+        }
+
+        .header-content h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .header-content p {
+            font-size: 1.2em;
+            margin: 10px 0 0;
+        }
+.content {
+    display: flex;
+    justify-content: space-between; /* Distribute space between items */
+    margin: 18px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+      
+
+.san-pham {
+    flex: 0 0 80%; /* Take up 80% of the space */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-right: 31px; /* Space for the ad */
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start; /* Align products to the start */
+    width: 100%;
+}
+
+
+.product-item {
+            width: calc(33.333% - 20px);
+            box-sizing: border-box;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            transition: box-shadow 0.3s, transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+        }
+
+        .product-item:hover {
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .product-item img:hover {
+            transform: scale(1.1); /* Zoom in on hover */
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            
+        }
+
+        .product-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .product-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+.product-price {
+    font-size: 1rem;
+    color: #221273;
+    margin: 5px 0;
+}
+        .product-name {
+            text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0;
+    color: #600000;
+}
+        .buy-now {
+     margin-top: auto;
+    background-color: #ff7e5f;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 25px; /* Rounded corners */
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    outline: none; /* Remove outline on focus */
+}
+
+.buy-now:hover {
+    background-color: red;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.buy-now:active {
+    animation: enhancedBounce 0.6s forwards;
+    background-color: #c67bfe; /* Change color on click */
+}
+
+@keyframes enhancedBounce {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    20% {
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    40% {
+        transform: scale(0.9) translateY(-20px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+    }
+    60% {
+        transform: scale(1.05) translateY(10px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    80% {
+        transform: scale(0.95) translateY(-10px);
+        box-shadow: 0 10px 22px rgba(0,0,0,0.1);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+}
+
+
+
+
+.ad-media {
+    width: 100%; /* Make sure the video fits the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    display: block; /* Ensure the video displays correctly */
+    margin-top: 10px; /* Space between title and video */
+}
+    .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adds space between panels */
+    align-items: center; /* Center content horizontally */
+}
+}
+   .quang-cao {
+    width: 290px; /* Adjust as needed */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 20px;
+}
+
+        .quang-cao h2 {
+            border-bottom: 2px solid #ff7e5f;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .quang-cao p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Unique Typography */
+        .header h1 {
+            font-family: 'Playfair Display', serif; /* Custom serif font */
+            font-size: 3em;
+            margin: 0;
+        }
+
+        .product-title {
+            font-family: 'Roboto', sans-serif; /* Custom sans-serif font */
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #ff7e5f; /* Brand color */
+            margin: 10px 0;
+        }
+`.fragrance-feature {
+            text-align: center;
+            margin: 20px;
+        }
+
+       
+         .sponsor-partners {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .sponsor-partners h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #ff7e5f;
+        }
+
+        .sponsor-partners img {
+            max-width: 150px;
+            margin: 10px;
+            vertical-align: middle;
+            transition: transform 0.3s;
+        }
+
+        .sponsor-partners img:hover {
+            transform: scale(1.1);
+        }
+
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.fragrance-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+.fragrance-item {
+    background-color: #f8f8f8;
+    border-radius: 28px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 20px;
+    flex: 1 1 calc(20% - 20px); /* Adjusts the items to be 5 in a row with gap consideration */
+    max-width: calc(15% - 16px); /* Ensures the max-width to fit 5 items in a row */
+}
+
+.fragrance-item img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.fragrance-item h3 {
+    font-size: 1.2em;
+    margin: 15px 0 10px;
+}
+
+.fragrance-item p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 44px;
+}
+
+.fragrance-item button {
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.fragrance-item button:hover {
+    background-color: hsl(337, 72%, 50%);
+}
+.faq-container {
+    position: fixed; /* Fixes the container in place */
+    top: 339px; /* Distance from the top */
+    right: 0; /* Position it at the right edge */
+    width: 166px; /* Adjust width as needed */
+    background-color: #fff; /* Background color */
+    padding: 20px; /* Padding inside the container */
+    border-radius: 50px; /* Rounded corners */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for better visibility */
+    z-index: 1000; /* Ensure it is above other content */
+    margin-top: 23px; /* Adds space below the .quang-cao */
+}
+
+
+.faq-container h2 {
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.faq-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.faq-container li {
+  margin-bottom: 21px;
+}
+
+.faq-question {
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+  .marquee-container {
+           font-family: Arial, sans-serif;
+            width: 100%; /* Full width of the viewport */
+            overflow: hidden;
+            position: relative;
+            background-color: #ff7e5f; /* Adjust background color as needed */
+            color: white;
+            padding: 15px 0; /* Increase padding for better visibility */
+            text-align: center; /* Center-align the content */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visibility */
+        }
+
+        .marquee {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 84%; /* Start the content outside of the view */
+            font-size: 2.1em; /* Increase font size for better visibility */
+            font-weight: bold; /* Make text bold */
+            animation: marquee 10s linear infinite; /* Slow down the speed */
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        .ad-image {
+    width: 100%; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+    margin-bottom: 20px; /* Add some space below the image */
+}
+         .video-container {
+    width: 100%; /* Full width of the container */
+    margin-left: 19px; /* Margin on the left side */
+}
+
+.video-container video {
+    width: calc(75% - 19px); /* Full width minus the left margin */
+    height: auto; /* Maintain aspect ratio */
+}
+
+     
+    </style>
+ 
+</head>
+<body>
+    <div class="header">
+        <div class="menu-ngang">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="header-content">
+            <h1>The Scent Corner</h1>
+            <p>Dive into a world of irresistible fragrances that captivate your senses!</p>
+        </div>
+    </div>
+ <div class="container">
+    <div class="fragrance-section">
+        <div class="fragrance-item">
+            <img src="Images/FloralBliss.jpg" alt="Floral Bliss">
+            <h3>Floral Bliss</h3>
+            <p>Delicate blooms that dance on your skin.</p>
+            <button>Shop Floral</button>
+        </div>
+        <div class="fragrance-item">
+            <img src="Images/woody.jpg" alt="Woody Depths">
+            <h3>Woody Depths</h3>
+            <p>Earthy notes that ground your spirit.</p>
+            <button>Shop Woody</button>
+        </div>
+        <div class="fragrance-item">
+            <img src="Images/CitrusZest.jpg" alt="Citrus Zest">
+            <h3>Citrus Zest</h3>
+            <p>Bright and refreshing, like a summer day.</p>
+            <button>Shop Citrus</button>
+        </div>
+        <div class="fragrance-item">
+            <img src="Images/Spicy.jpg" alt="Spicy Adventure">
+            <h3>Spicy Adventure</h3>
+            <p>Warm and bold, ignite your passion.</p>
+            <button>Shop Spicy</button>
+        </div>
+        <div class="video-container">
+        <video autoplay muted loop>
+        <source src="Images/ShortVideo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    </div>
+
+ <div class="marquee">
+        <div class="marquee-content">
+            ****Free shipping on orders over $50! * 100% satisfaction guarantee or your money back!****
+        </div>
+    </div>
+    </div>
+</div>
+    <div class="content">
+        <div class="san-pham">
+            <h2>Our  Products</h2>
+            <div class="product-list">
+                <!-- Add at least 10 product items here -->
+                <div class="product-item">
+        <h2 class="product-name">Hugo Boss</h2> <!-- Added product name -->
+    <img src="Images/Boss.jpg" alt="Product 1">
+    <div class="product-info">
+        <p class="product-description">
+            The Boss tạo nên một phong cách lịch lãm, tự tin và đầy sức hút. Đây là sự lựa chọn lý tưởng cho những quý ông muốn thể hiện sự thành đạt và phong cách cá nhân đặc biệt của mình.
+        </p>
+        <p class="product-price">$49.99</p> <!-- Added product price -->
+        <button class="buy-now">Buy Now</button>
+    </div>
+</div><div class="product-item">
+        <h2 class="product-name">Chanel No. 5</h2> <!-- Added product name -->
+    <img src="Images/Chanel.jpg" alt="Product 1">
+    <div class="product-info">
+        <p class="product-description">
+            Chanel No. 5 là biểu tượng của sự sang trọng và quyến rũ. Hương thơm tinh tế này phù hợp với những người phụ nữ yêu thích phong cách thanh lịch và đẳng cấp.
+        </p>
+        <p class="product-price">$49.99</p> <!-- Added product price -->
+        <button class="buy-now">Buy Now</button>
+    </div>
+</div>
+
+               
+                <div class="product-item">
+                    <h2 class="product-name">Victoria's</h2>
+                    <img src="Images/VictoriaSecrest.jpg" alt="Product 3">
+                    <div class="product-info">
+                    <p class="product-description">Victoria's Secret Bombshell: Mang hương thơm tươi mát, gợi cảm với sự pha trộn của trái cây nhiệt đới và hoa cỏ, Bombshell thể hiện vẻ đẹp hiện đại và tự tin..</p>
+                     <p class="product-price">$59.99</p>
+                        <button class="buy-now">Buy Now</button>
+                        </div>
+                   
+                    
+                </div>
+                <div class="product-item">
+                    <h2 class="product-name">Dolce</h2>
+                    <img src="Images/Dolce.jpg" alt="Product 4">
+                   <div class="product-info">
+                    <p class="product-description">Dolce-Gabbana Light Blue: Một hương thơm nhẹ nhàng và tươi mát, kết hợp giữa cam bergamot, hoa nhài và gỗ tuyết tùng, mang đến cảm giác thanh lịch và thoải mái.</p>
+                     <p class="product-price">$89.99</p>
+                       <button class="buy-now">Buy Now</button>
+                        </div>
+                    
+                </div>
+                <div class="product-item">
+                    <h2 class="product-name">Lacoste</h2>
+                    <img src="Images/CASAU.jpg" alt="Product 5">
+                  <div class="product-info">
+                    <p class="product-description">Lacoste Essential mang đến sự tươi mát và tự do. Đây là lựa chọn phù hợp một cách hoàn hảo cho những người đàn ông yêu thích sự đơn giản nhưng đầy phong cách</p>
+                     <p class="product-price">$69.99</p>
+                      <button class="buy-now">Buy Now</button>
+                        </div>
+                </div>
+                <div class="product-item">
+                    <h2 class="product-name">Chanel Coco</h2>
+                    <img src="Images/coco.jpg" alt="Product 6">
+                   <div class="product-info">
+                    <p class="product-description">Chanel Coco Mademoiselle: Một hương thơm quyến rũ và mạnh mẽ, kết hợp hoàn hảo giữa hoa cam, hoắc hương và vani, dành cho những người phụ nữ yêu kiều và táo bạo.</p>
+                    <p class="product-price">$49.99</p>
+                       <button class="buy-now">Buy Now</button>
+                        </div>
+                    
+                </div>
+                <div class="product-item">
+                    <h2 class="product-name">Guerlain Aqua Allegoria</h2>
+                    <img src="Images/aqua.jpg" alt="Product 7">
+                    <div class="product-info">
+                    <p class="product-description">Dòng nước hoa nhẹ nhàng, tươi mát với sự kết hợp của hương hoa và trái cây, mang đến cảm giác thanh khiết và sảng khoái, thích hợp cho mùa hè..</p>
+                     <p class="product-price">$49.99</p>
+                        <button class="buy-now">Buy Now</button>
+                        </div>
+                   
+                </div>
+                <div class="product-item">
+                    <h2 class="product-name">Marc Jacobs Daisy</h2>
+                    <img src="Images/daisy.jpg" alt="Product 8">
+                   <div class="product-info">
+                    <p class="product-description">Mang hương thơm ngọt ngào và tươi mát từ hoa cỏ và trái cây, Daisy tạo nên hình ảnh của sự trẻ trung, tự nhiên và tràn đầy sức sống.</p>
+                     <p class="product-price">$39.99</p>
+                       <button class="buy-now">Buy Now</button>
+                        </div>
+                    
+                </div>
+                <div class="product-item">
+                    <h2 class="product-name">Versace Bright</h2>
+                    <img src="Images/Versage.jpg" alt="Product 9">
+                    <div class="product-info">
+                    <p class="product-description"> Một hương thơm nữ tính, quyến rũ với sự pha trộn của quả lựu, hoa mẫu đơn và xạ hương, đem lại cảm giác tươi mát và gợi cảm.</p>
+                     <p class="product-price">$29.99</p>
+                        <button class="buy-now">Buy Now</button>
+                        </div>
+                    
+                </div>
+                <div class="product-item">
+                    <h2 class="product-name">Gucci Flora</h2>
+                    <img src="Images/Gucci.jpg" alt="Product 10">
+                   <div class="product-info">
+                    <p class="product-description">Hương thơm tinh tế và sang trọng với sự kết hợp giữa hoa mẫu đơn, hoa hồng và cam quýt, Flora dành cho những người phụ nữ yêu kiều và thanh lịch.</p>
+                     <p class="product-price">$49.99</p>
+                       <button class="buy-now">Buy Now</button>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+       <div class="quang-cao">
+         <div class="container">
+    <h2>Advertisements</h2>
+   <div style="background-color: #f48165; color: #f8ea07; text-align: left; padding: 11px; border-radius: 31px; font-family: Arial, sans-serif;">
+    <h1 style="font-size: 1.3em; margin: 0; text-transform: uppercase; letter-spacing: 2px;">
+        Thứ Sáu Vàng Rực Rỡ!
+    </h1>
+    <p style="font-size: 1.2em; margin: 6px 0 -19px;">
+        Thứ sáu này, giảm ngay <span style="font-weight: bold; font-size: 1.8em;">50%</span> tất cả sản phẩm yêu thích của bạn!
+    </p>
+    <p style="font-size: 1.2em;">
+        -Đừng bỏ lỡ cơ hội sở hữu những mùi hương đẳng cấp với mức giá chưa từng có.
+    </p>
+   <p style="font-size: 1em; color: #f8ea07; font-weight: bold; animation: blink 0.5s cubic-bezier(0, 0, .57, .58) infinite; @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }">
+    Nhanh tay, số lượng có hạn!
+</p>
+
+
+</div>
+
+       <img src="Images/ads4.jpeg" alt="Ad Image" class="ad-image">  
+        <img src="Images/ad4.jpg" alt="Ad Image" class="ad-image">  
+             
+    <video class="ad-media" autoplay muted loop>
+        <source src="Images/Ads2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+            </div>
+</div>
+
+    </div>
+    <div class="faq-container">
+  <h2>Fragrance FAQs</h2>
+  <ul>
+    <li>
+      <div class="faq-question">What types of perfumes do you offer?</div>
+      
+    </li>
+    <li>
+      <div class="faq-question">How do I choose a scent?</div>
+      
+    </li>
+    <li>
+      <div class="faq-question">Are your perfumes long-lasting?</div>
+      
+    </li>
+    <li>
+      <div class="faq-question">Do you offer gift options?</div>
+    
+    </li>
+    <li>
+      <div class="faq-question">Can I return a fragrance?</div>
+    
+    </li>
+  </ul>
+</div>
+
+     <div class="sponsor-partners">
+        <h2>Our Sponsor Partners</h2>
+        <div class="sponsor-logos">
+            <img src="Images/sponsor1.jpg" alt="Sponsor 1">
+            <img src="Images/sponsor2.jpg" alt="Sponsor 2">
+            <img src="Images/sponsor3.jpg" alt="Sponsor 3">
+            <!-- Add more sponsor logos as needed -->
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2024 The Scent Corner</p>
+    </div>
+</body>
+</html>
